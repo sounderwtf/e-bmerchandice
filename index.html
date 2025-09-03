@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E | B STORE</title>
+    <title>Tienda de Ropa</title>
     
     <!-- Three.js library for 3D -->
     <script async src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
@@ -34,8 +34,35 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+        
+        /* New fixed top navigation bar styles */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
 
-        /* New hero section styles */
+        .top-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            padding: 0 20px;
+            transition: color 0.3s ease;
+        }
+
+        .top-nav a:hover {
+            color: #ccc;
+        }
+
+        /* Hero section styles */
         .hero-section {
             display: flex;
             flex-direction: column;
@@ -48,28 +75,19 @@
         }
 
         .hero-title {
-            font-family: 'Courier New', Courier, monospace; /* Changed font */
-            font-size: clamp(2em, 6vw, 4em); /* Adjusted font size */
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: clamp(3em, 8vw, 6em);
             text-transform: uppercase;
             font-weight: 300;
             letter-spacing: 5px;
-            border-right: 2px solid rgba(255, 255, 255, 0.75); /* Cursor effect */
-            white-space: nowrap;
-            overflow: hidden;
-            width: 0; /* Starts with zero width */
-            animation: typing 3.5s steps(20, end), blink-caret .75s step-end infinite;
+            opacity: 0; /* Initially hidden */
+            animation: fade-in-out 6s ease-in-out infinite; /* Continuous animation */
         }
         
-        /* Typing animation */
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        /* The typewriter cursor effect */
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: rgba(255, 255, 255, 0.75); }
+        @keyframes fade-in-out {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
         }
         
         .cta-button {
@@ -173,13 +191,13 @@
             height: 100% !important;
         }
         
-        /* New products grid styles */
-        #products-grid {
+        /* Products grid styles */
+        .products-grid-section {
             text-align: center;
             padding: 50px 20px;
         }
 
-        #products-grid h2 {
+        .products-grid-section h2 {
             font-size: clamp(1.8em, 4vw, 3em);
             margin-bottom: 50px;
             font-weight: 300;
@@ -243,7 +261,7 @@
             background-color: #ccc;
         }
 
-        /* Styles for the social media section */
+        /* Social media section styles */
         #social-media {
             margin-top: 50px;
             text-align: center;
@@ -263,9 +281,16 @@
     </style>
 </head>
 <body>
-    <!-- New hero section with animated title and CTA button -->
-    <div class="hero-section">
-        <h2 class="hero-title">Bienvenido a E | B, lo mejor de lo mejor, para los mejores.</h2>
+    <!-- Fixed top navigation bar -->
+    <nav class="top-nav">
+        <a href="#hero-section">Inicio</a>
+        <a href="#anime-section">Anime</a>
+        <a href="#party-section">Party</a>
+    </nav>
+
+    <!-- Hero section with animated title and CTA button -->
+    <div class="hero-section" id="hero-section">
+        <h2 class="hero-title">Estilo, Simpleza.</h2>
         <a href="#featured-product" class="cta-button" id="explore-button">
             Explora la Colección
         </a>
@@ -282,15 +307,15 @@
         </div>
     </main>
     <section id="featured-product">
-        <h2>Nuestra Camisa Favorita</h2>
+        <h2>Nuestra Camisa Destacada</h2>
         <div id="black-shirt-3d-container">
             
         </div>
     </section>
 
-    <!-- New products grid section -->
-    <section id="products-grid">
-        <h2>Nuestros Productos</h2>
+    <!-- Products grid section (Original section) -->
+    <section id="products-grid" class="products-grid-section">
+        <h2>Productos Genéricos</h2>
         <div class="products-grid-container">
             <!-- Product Card 1 -->
             <div class="product-card">
@@ -323,13 +348,63 @@
         </div>
     </section>
 
+    <!-- New Anime Collection section -->
+    <section id="anime-section" class="products-grid-section">
+        <h2>Colección Anime</h2>
+        <div class="products-grid-container">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x400/222222/FFD700?text=Diseño+Anime+A" alt="Diseño de anime">
+                <h3>Diseño "Samurai"</h3>
+                <p>$45.00</p>
+                <button>Ver Producto</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x400/8B0000/F0F0F0?text=Diseño+Anime+B" alt="Diseño de anime">
+                <h3>Diseño "Dragón"</h3>
+                <p>$55.00</p>
+                <button>Ver Producto</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x400/00008B/FFFFFF?text=Diseño+Anime+C" alt="Diseño de anime">
+                <h3>Diseño "Kaiju"</h3>
+                <p>$50.00</p>
+                <button>Ver Producto</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Party Collection section -->
+    <section id="party-section" class="products-grid-section">
+        <h2>Colección Party</h2>
+        <div class="products-grid-container">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x400/00FFFF/000000?text=Diseño+Party+A" alt="Diseño para fiestas">
+                <h3>Diseño "Neon Wave"</h3>
+                <p>$40.00</p>
+                <button>Ver Producto</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x400/FFC0CB/000000?text=Diseño+Party+B" alt="Diseño para fiestas">
+                <h3>Diseño "Pink Dream"</h3>
+                <p>$38.00</p>
+                <button>Ver Producto</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x400/DA70D6/000000?text=Diseño+Party+C" alt="Diseño para fiestas">
+                <h3>Diseño "Disco Star"</h3>
+                <p>$42.00</p>
+                <button>Ver Producto</button>
+            </div>
+        </div>
+    </section>
+
     <!-- Social media section -->
     <section id="social-media">
         <div class="social-icons">
             <a href="https://www.facebook.com/tumarca" target="_blank" aria-label="Facebook">
                 <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="https://www.instagram.com/tumarca" target="_blank" aria-label="Instagram">
+            <a href="https://www.instagram.com/eb_clothes2025" target="_blank" aria-label="Instagram">
                 <i class="fab fa-instagram"></i>
             </a>
         </div>
@@ -342,18 +417,14 @@
             const shirtContainer = document.querySelector('.shirt-container');
             // The animation is handled purely with CSS.
 
-            // Smooth scroll logic
-            const exploreButton = document.getElementById('explore-button');
-            exploreButton.addEventListener('click', (event) => {
-                event.preventDefault(); // Prevent default anchor behavior
-                const targetId = exploreButton.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop,
-                        behavior: 'smooth' // Smooth scroll effect
+            // Smooth scroll logic for all internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
                     });
-                }
+                });
             });
 
             // Logic for the black 3D shirt
